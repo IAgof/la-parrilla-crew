@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Parrilla Crew — Ropa, Accesorios & Cultura BBQ</title>
+<meta name="description" content="Ropa y accesorios con personajes cómic de barbacoa. Chuletón, Panceta, Espárrago y Buti: la crew que vive la parrilla.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Passion+One:wght@400;700;900&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#C0392B;--orange:#F97316;--gold:#D4A04A;--green:#5B7A3A;
+  --charcoal:#292524;--charcoal-deep:#1C1917;--charcoal-abyss:#0C0A09;
+  --bone:#F5F0E8;--bone-dim:#E8E0D4;
+  --smoke:rgba(249,115,22,0.06);
+}
+::selection{background:var(--orange);color:var(--charcoal-abyss)}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--charcoal-abyss);color:var(--bone);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.font-display{font-family:'Passion One',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.font-marker{font-family:'Bangers',cursive;letter-spacing:.04em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;font-family:inherit}
+
+/* === NOISE OVERLAY === */
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--charcoal-abyss)}
+::-webkit-scrollbar-thumb{background:var(--charcoal);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--orange)}
+
+/* === NAV === */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s}
+.nav.scrolled{background:rgba(12,10,9,0.95);box-shadow:0 2px 30px rgba(0,0,0,0.5);backdrop-filter:blur(10px)}
+.nav-logo{height:50px;width:50px;object-fit:contain;border-radius:50%}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{font-family:'Passion One',sans-serif;font-size:1rem;text-transform:uppercase;color:var(--bone-dim);transition:color .2s;letter-spacing:.05em}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{background:var(--orange);color:var(--charcoal-abyss);padding:.5rem 1.25rem;border-radius:8px;font-family:'Passion One',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;transition:transform .2s,background .2s}
+.nav-cta:hover{transform:scale(1.05);background:var(--gold)}
+
+/* === HERO === */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:1}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,9,0.3) 0%,rgba(12,10,9,0.6) 40%,rgba(12,10,9,0.92) 80%,var(--charcoal-abyss) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:900px}
+.hero-logo{width:180px;height:180px;margin:0 auto 1.5rem;border-radius:50%;object-fit:contain;filter:drop-shadow(0 0 40px rgba(249,115,22,0.4));animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero h1{font-family:'Bangers',cursive;font-size:clamp(3rem,8vw,6.5rem);line-height:.95;color:#fff;text-shadow:3px 3px 0 var(--red),6px 6px 0 rgba(0,0,0,0.3);margin-bottom:.75rem}
+.hero h1 span{color:var(--orange)}
+.hero-sub{font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--bone-dim);font-weight:600;margin-bottom:2rem;opacity:.9}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border-radius:12px;font-family:'Passion One',sans-serif;font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;transition:all .25s}
+.btn-primary{background:var(--orange);color:var(--charcoal-abyss);box-shadow:0 4px 25px rgba(249,115,22,0.4)}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 6px 35px rgba(249,115,22,0.5)}
+.btn-outline{border:2px solid var(--bone-dim);color:var(--bone);background:transparent}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+.hero-scroll{margin-top:3rem;animation:bounce 2s infinite}
+@keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
+
+/* === SECTIONS === */
+.section{padding:6rem 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-family:'Passion One',sans-serif;color:var(--orange);font-size:.9rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:.5rem}
+.section-title{font-size:clamp(2.5rem,5vw,4rem);line-height:1;margin-bottom:1rem;color:#fff}
+.section-desc{color:var(--bone-dim);max-width:600px;line-height:1.7;font-size:1rem;opacity:.8}
+.fire-line{height:3px;background:linear-gradient(90deg,transparent,var(--orange),var(--red),transparent);margin:1.5rem 0;opacity:.5;border-radius:2px}
+
+/* === CHARACTERS === */
+.chars-section{background:linear-gradient(180deg,var(--charcoal-abyss),var(--charcoal-deep),var(--charcoal-abyss))}
+.chars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.char-card{position:relative;background:linear-gradient(160deg,rgba(41,37,36,0.95),rgba(28,25,23,0.98));border:1px solid rgba(249,115,22,0.1);border-radius:20px;padding:1.5rem;text-align:center;overflow:hidden;transition:all .4s cubic-bezier(.23,1,.32,1)}
+.char-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--orange));transform:scaleX(0);transition:transform .4s;border-radius:20px 20px 0 0}
+.char-card:hover{transform:translateY(-8px);border-color:rgba(249,115,22,0.35);box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 40px rgba(249,115,22,0.08)}
+.char-card:hover::before{transform:scaleX(1)}
+.char-img-wrap{position:relative;width:100%;aspect-ratio:3/4;border-radius:14px;overflow:hidden;margin-bottom:1.25rem;background:linear-gradient(135deg,#f7f3ed,#ede7dd)}
+.char-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.char-card:hover .char-img-wrap img{transform:scale(1.05)}
+.char-name{font-family:'Bangers',cursive;font-size:1.6rem;color:#fff;letter-spacing:.04em}
+.char-role{font-family:'Passion One',sans-serif;color:var(--orange);font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;margin:.25rem 0 .75rem}
+.char-quote{font-style:italic;color:var(--bone-dim);font-size:.9rem;line-height:1.5;opacity:.75}
+.char-quote::before{content:'\201C';font-size:1.5rem;color:var(--orange);margin-right:.2rem}
+
+/* === PRODUCTS === */
+.products-section{background:var(--charcoal-abyss)}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.product-card{position:relative;background:linear-gradient(160deg,rgba(41,37,36,0.7),rgba(28,25,23,0.9));border:1px solid rgba(249,115,22,0.08);border-radius:18px;overflow:hidden;transition:all .35s}
+.product-card:hover{transform:translateY(-5px);border-color:rgba(249,115,22,0.25);box-shadow:0 15px 50px rgba(0,0,0,0.3)}
+.product-visual{aspect-ratio:4/3;background:linear-gradient(135deg,var(--charcoal),rgba(41,37,36,0.8));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(249,115,22,0.08),transparent 60%)}
+.product-icon{font-size:3.5rem;filter:grayscale(0.2)}
+.product-badge{position:absolute;top:1rem;right:1rem;background:var(--red);color:#fff;font-family:'Passion One',sans-serif;font-size:.75rem;padding:.3rem .75rem;border-radius:6px;letter-spacing:.08em;text-transform:uppercase}
+.product-info{padding:1.25rem 1.5rem}
+.product-name{font-family:'Passion One',sans-serif;font-size:1.3rem;color:#fff;text-transform:uppercase}
+.product-desc{color:var(--bone-dim);font-size:.8rem;margin:.4rem 0 .75rem;line-height:1.5;opacity:.7}
+.product-price{font-family:'Bangers',cursive;font-size:1.4rem;color:var(--orange)}
+.product-price span{font-family:'Nunito',sans-serif;font-size:.75rem;color:var(--bone-dim);font-weight:400;margin-left:.25rem}
+
+/* === PHILOSOPHY === */
+.philosophy-section{position:relative;background:linear-gradient(180deg,var(--charcoal-abyss),var(--charcoal-deep));overflow:hidden}
+.philosophy-section::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at 80% 50%,rgba(249,115,22,0.06),transparent 70%);pointer-events:none}
+.philosophy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;margin-top:3rem;align-items:center}
+.philosophy-text{display:flex;flex-direction:column;gap:1.5rem}
+.philosophy-item{padding-left:1.5rem;border-left:3px solid var(--orange)}
+.philosophy-item h3{font-family:'Passion One',sans-serif;font-size:1.4rem;color:var(--orange);margin-bottom:.35rem;text-transform:uppercase}
+.philosophy-item p{color:var(--bone-dim);font-size:.95rem;line-height:1.7;opacity:.8}
+.philosophy-visual{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.philosophy-visual img{width:100%;height:100%;object-fit:cover}
+.philosophy-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,57,43,0.15),transparent);mix-blend-mode:overlay}
+
+/* === COLLABS === */
+.collabs-section{background:var(--charcoal-abyss)}
+.collabs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.collab-card{background:linear-gradient(160deg,rgba(41,37,36,0.6),rgba(28,25,23,0.8));border:1px solid rgba(249,115,22,0.08);border-radius:16px;padding:2rem;text-align:center;transition:all .3s}
+.collab-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px)}
+.collab-icon{font-size:3rem;margin-bottom:1rem}
+.collab-card h3{font-family:'Passion One',sans-serif;font-size:1.3rem;color:#fff;text-transform:uppercase;margin-bottom:.5rem}
+.collab-card p{color:var(--bone-dim);font-size:.85rem;line-height:1.6;opacity:.75}
+
+/* === NEWSLETTER === */
+.newsletter-section{position:relative;padding:5rem 2rem;background:linear-gradient(135deg,var(--charcoal-deep),var(--charcoal));overflow:hidden}
+.newsletter-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(249,115,22,0.08),transparent 60%);pointer-events:none}
+.newsletter-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.newsletter-inner h2{font-family:'Bangers',cursive;font-size:clamp(2rem,5vw,3.2rem);color:#fff;margin-bottom:.5rem}
+.newsletter-inner h2 span{color:var(--orange)}
+.newsletter-inner p{color:var(--bone-dim);margin-bottom:2rem;font-size:1rem}
+.newsletter-form{display:flex;gap:.75rem;max-width:500px;margin:0 auto}
+.newsletter-form input{flex:1;padding:.85rem 1.25rem;border-radius:12px;border:2px solid rgba(249,115,22,0.2);background:rgba(12,10,9,0.6);color:var(--bone);font-size:1rem;font-family:'Nunito',sans-serif;transition:border-color .3s}
+.newsletter-form input::placeholder{color:rgba(232,224,212,0.4)}
+.newsletter-form input:focus{outline:none;border-color:var(--orange)}
+.newsletter-form button{padding:.85rem 2rem;border-radius:12px;background:var(--orange);color:var(--charcoal-abyss);font-family:'Passion One',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em;transition:all .25s;white-space:nowrap}
+.newsletter-form button:hover{background:var(--gold);transform:scale(1.03)}
+
+/* === FOOTER === */
+.footer{background:var(--charcoal-abyss);border-top:1px solid rgba(249,115,22,0.08);padding:3rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:start}
+.footer-brand{display:flex;align-items:center;gap:1rem}
+.footer-brand img{width:45px;height:45px;border-radius:50%}
+.footer-brand-text .brand-name{font-family:'Bangers',cursive;font-size:1.3rem;color:#fff}
+.footer-brand-text .brand-tagline{font-size:.75rem;color:var(--bone-dim);opacity:.6}
+.footer-links h4{font-family:'Passion One',sans-serif;color:var(--orange);font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.footer-links a{color:var(--bone-dim);font-size:.85rem;opacity:.6;transition:all .2s}
+.footer-links a:hover{opacity:1;color:var(--orange)}
+.footer-social{display:flex;gap:.75rem;justify-content:flex-end}
+.footer-social a{width:40px;height:40px;border-radius:10px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.12);display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:1.1rem}
+.footer-social a:hover{background:var(--orange);border-color:var(--orange);transform:translateY(-2px)}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(249,115,22,0.06);display:flex;justify-content:space-between;font-size:.75rem;color:var(--bone-dim);opacity:.5}
+
+/* === ANIMATIONS === */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* === RESPONSIVE === */
+@media(max-width:1024px){
+  .chars-grid{grid-template-columns:repeat(2,1fr)}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .philosophy-grid{grid-template-columns:1fr}
+  .collabs-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .section{padding:4rem 1.25rem}
+  .chars-grid{grid-template-columns:1fr 1fr;gap:1rem}
+  .char-name{font-size:1.3rem}
+  .char-quote{font-size:.8rem}
+  .products-grid{grid-template-columns:1fr}
+  .collabs-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;text-align:center}
+  .footer-social{justify-content:center}
+  .footer-bottom{flex-direction:column;align-items:center;gap:.5rem}
+  .newsletter-form{flex-direction:column}
+  .hero-logo{width:130px;height:130px}
+}
+@media(max-width:480px){
+  .chars-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#"><img src="logo.png" alt="La Parrilla Crew" class="nav-logo"></a>
+  <div class="nav-links">
+    <a href="#personajes">La Crew</a>
+    <a href="#productos">Tienda</a>
+    <a href="#filosofia">Filosofía</a>
+    <a href="#collabs">Collabs</a>
+    <a href="#newsletter" class="nav-cta">Únete</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="crew.png" alt="La Parrilla Crew reunida alrededor de la barbacoa">
+  </div>
+  <div class="hero-content">
+    <img src="logo.png" alt="Logo La Parrilla Crew" class="hero-logo">
+    <h1>La barbacoa es nuestra <span>filosofía de vida</span></h1>
+    <p class="hero-sub">Ropa, accesorios y actitud. Con personajes que entienden que lo mejor de la vida pasa alrededor de una parrilla y una buena cerveza.</p>
+    <div class="hero-buttons">
+      <a href="#personajes" class="btn btn-primary">Descubre la Crew</a>
+      <a href="#productos" class="btn btn-outline">Tienda</a>
+    </div>
+    <div class="hero-scroll">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="section chars-section" id="personajes">
+  <div class="section-inner">
+    <p class="section-label reveal">Conoce a la Crew</p>
+    <h2 class="section-title reveal">Los que mandan<br>en la parrilla</h2>
+    <p class="section-desc reveal">Cuatro personajes, cuatro ingredientes esenciales, una sola filosofía: la vida se disfruta al calor de las brasas, con amigos y con una buena cerveza en la mano.</p>
+    <div class="chars-grid">
+      <div class="char-card reveal reveal-delay-1">
+        <div class="char-img-wrap"><img src="chuleton.png" alt="Don Chuletón"></div>
+        <h3 class="char-name">Don Chuletón</h3>
+        <p class="char-role">El Jefe de la Parrilla</p>
+        <p class="char-quote">Al punto o nada, compañero.</p>
+      </div>
+      <div class="char-card reveal reveal-delay-2">
+        <div class="char-img-wrap"><img src="panceta.png" alt="Panceta"></div>
+        <h3 class="char-name">Panceta</h3>
+        <p class="char-role">El Alma de la Fiesta</p>
+        <p class="char-quote">¡Otra ronda, que la brasa no para!</p>
+      </div>
+      <div class="char-card reveal reveal-delay-3">
+        <div class="char-img-wrap"><img src="esparrago.png" alt="Espárrago Verde"></div>
+        <h3 class="char-name">Espárrago Verde</h3>
+        <p class="char-role">El Toque Healthy</p>
+        <p class="char-quote">Esto es producto de temporada, ¿eh?</p>
+      </div>
+      <div class="char-card reveal reveal-delay-4">
+        <div class="char-img-wrap"><img src="buti.png" alt="Buti"></div>
+        <h3 class="char-name">Buti</h3>
+        <p class="char-role">L'Ànima Catalana</p>
+        <p class="char-quote">Amb mongetes o no és butifarra, nen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products-section" id="productos">
+  <div class="section-inner">
+    <p class="section-label reveal">Equípate</p>
+    <h2 class="section-title reveal">La Tienda</h2>
+    <p class="section-desc reveal">Cada pieza lleva la esencia de la Crew. Diseño cómic de autor, materiales de calidad y ese toque gamberro que solo entienden los de la brasa.</p>
+    <div class="products-grid">
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-visual">
+          <span class="product-icon">👕</span>
+          <span class="product-badge">Más vendido</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Camisetas La Crew</h3>
+          <p class="product-desc">Algodón orgánico 180g. Estampado gran formato con tu personaje favorito.</p>
+          <p class="product-price">29–35€ <span>/ unidad</span></p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-visual">
+          <span class="product-icon">🔥</span>
+          <span class="product-badge">Esencial</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Delantales Parrilleros</h3>
+          <p class="product-desc">Lona resistente al calor. Cada personaje tiene su modelo. Con abrebotellas integrado.</p>
+          <p class="product-price">39–45€ <span>/ unidad</span></p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-visual">
+          <span class="product-icon">🧢</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Gorras Trucker</h3>
+          <p class="product-desc">Parches bordados de cada personaje. Ajuste snapback. Edición limitada.</p>
+          <p class="product-price">22–28€ <span>/ unidad</span></p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-visual">
+          <span class="product-icon">🧥</span>
+          <span class="product-badge">Nuevo</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Sudaderas Oversize</h3>
+          <p class="product-desc">Hoodie con ilustración gran formato en la espalda. Interior perchado. Para tardes de otoño.</p>
+          <p class="product-price">55–65€ <span>/ unidad</span></p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-visual">
+          <span class="product-icon">🍖</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Set Parrillero</h3>
+          <p class="product-desc">Pinzas + espátula + tenedor con mangos personalizados y estuche de lona branded.</p>
+          <p class="product-price">45–55€ <span>/ set</span></p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-visual">
+          <span class="product-icon">🍺</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Posavasos La Crew</h3>
+          <p class="product-desc">Set de 4 en corcho premium. Cada uno con un personaje diferente. Caja regalo incluida.</p>
+          <p class="product-price">18–22€ <span>/ set de 4</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="section philosophy-section" id="filosofia">
+  <div class="section-inner">
+    <p class="section-label reveal">Nuestra filosofía</p>
+    <h2 class="section-title reveal">Más que una marca,<br>una forma de vivir</h2>
+    <div class="fire-line"></div>
+    <div class="philosophy-grid">
+      <div class="philosophy-text">
+        <div class="philosophy-item reveal">
+          <h3>La Brasa nos une</h3>
+          <p>No importa de dónde vengas ni qué hagas. Cuando se enciende la parrilla, todos somos iguales. La barbacoa es el gran igualador social: el ritual que convierte a desconocidos en amigos y a amigos en familia.</p>
+        </div>
+        <div class="philosophy-item reveal">
+          <h3>El campo como estilo de vida</h3>
+          <p>Creemos que lo bueno está fuera de la ciudad. En el aire limpio, en el producto de temporada, en los pueblos que guardan la tradición. No somos nostálgicos: somos realistas que saben que el futuro huele a leña.</p>
+        </div>
+        <div class="philosophy-item reveal">
+          <h3>Cerveza artesanal, siempre</h3>
+          <p>La cerveza industrial es para estadios. Nosotros brindamos con craft: con sabor, con historia, con el maestro cervecero detrás. Porque si cuidas la carne y cuidas el fuego, la cerveza no puede ser cualquiera.</p>
+        </div>
+        <div class="philosophy-item reveal">
+          <h3>Humor y autenticidad</h3>
+          <p>Nos reímos de todo, empezando por nosotros mismos. Nada de postureo: aquí mancharse las manos de carbón es un honor y el delantal con manchas de salsa es una medalla.</p>
+        </div>
+      </div>
+      <div class="philosophy-visual reveal">
+        <img src="crew.png" alt="La Crew alrededor de la barbacoa">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLABS -->
+<section class="section collabs-section" id="collabs">
+  <div class="section-inner">
+    <p class="section-label reveal">Colaboraciones</p>
+    <h2 class="section-title reveal">Alianzas con alma</h2>
+    <p class="section-desc reveal">Nos juntamos con quienes comparten nuestra filosofía. Producto local, pasión genuina y cero corporativismo.</p>
+    <div class="collabs-grid">
+      <div class="collab-card reveal reveal-delay-1">
+        <div class="collab-icon">🍺</div>
+        <h3>Cervecerías Artesanales</h3>
+        <p>Etiquetas edición limitada con los personajes de La Crew. Packs cerveza + merch. Eventos conjuntos de cata y parrilla. Porque la birra y la brasa van de la mano.</p>
+      </div>
+      <div class="collab-card reveal reveal-delay-2">
+        <div class="collab-icon">🔥</div>
+        <h3>Restaurantes de Parrilla</h3>
+        <p>Asadores y BBQ joints como puntos de venta y embajadores. Delantales para el equipo, posavasos en cada mesa y menús "La Crew" con platos de los personajes.</p>
+      </div>
+      <div class="collab-card reveal reveal-delay-3">
+        <div class="collab-icon">🎪</div>
+        <h3>Eventos Gastronómicos</h3>
+        <p>Ferias rurales, festivales de barbacoa y mercados artesanos. Stand temático con los personajes a tamaño real, degustaciones y venta directa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section newsletter-section" id="newsletter">
+  <div class="newsletter-inner reveal">
+    <h2 class="font-marker">Únete a <span>la Crew</span></h2>
+    <p>Recibe un <strong style="color:var(--orange)">10% de descuento</strong> en tu primer pedido, acceso anticipado a colecciones y contenido exclusivo de los personajes. Sin spam, solo brasa.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault();this.innerHTML='<p style=\'color:var(--orange);font-family:Bangers,cursive;font-size:1.3rem;padding:1rem\'>¡Bienvenido a la Crew! 🔥🍺</p>'">
+      <input type="email" placeholder="tu@email.com" required>
+      <button type="submit">¡Me apunto!</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="logo.png" alt="Logo">
+        <div class="footer-brand-text">
+          <div class="brand-name">La Parrilla Crew</div>
+          <div class="brand-tagline">Desde 2026 — Ropa & Cultura BBQ</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Navegar</h4>
+      <ul>
+        <li><a href="#personajes">La Crew</a></li>
+        <li><a href="#productos">Tienda</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#collabs">Colaboraciones</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-links" style="margin-bottom:1rem">
+        <h4>Síguenos</h4>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="TikTok">🎵</a>
+        <a href="#" aria-label="YouTube">▶️</a>
+        <a href="#" aria-label="Twitter">✖️</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 La Parrilla Crew. Todos los derechos reservados.</span>
+    <span>Hecho con 🔥 y mucha cerveza.</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth parallax on hero
+window.addEventListener('scroll', () => {
+  const hero = document.querySelector('.hero-bg img');
+  if (hero) {
+    const scroll = window.scrollY;
+    hero.style.transform = `scale(1.05) translateY(${scroll * 0.15}px)`;
+  }
+});
+</script>
+</body>
+</html>
